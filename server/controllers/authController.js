@@ -145,3 +145,20 @@ export const updatePassword = async (req, res) => {
     });
   }
 };
+
+// @desc    Logout user
+// @route   POST /api/auth/logout
+// @access  Public
+export const logout = async (req, res) => {
+  try {
+    res.json({
+      success: true,
+      message: 'Logged out successfully',
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
