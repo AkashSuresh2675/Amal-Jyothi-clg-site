@@ -1,76 +1,253 @@
-# AJCE Website - Kinetic Redesign
+# Amal Jyothi College of Engineering - Official Website
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Next.js](https://img.shields.io/badge/built%20with-Next.js-black) ![Tailwind CSS](https://img.shields.io/badge/styled%20with-Tailwind%20CSS-38B2AC)
+A modern, responsive website built with the MERN stack for Amal Jyothi College of Engineering.
 
-> **Experience Innovation in Motion**
-> A modern, sleek, and youth-centric digital gateway for Amal Jyothi College of Engineering (AJCE). Designed with kinetic energy and fluid interactions to reflect the vibrant spirit of our campus.
+## 🚀 Tech Stack
 
-## 🚀 Project Overview
+### Frontend
+- **React.js** - UI Library
+- **Tailwind CSS** - Styling
+- **ShadCN UI / Radix UI** - Component Library
+- **Framer Motion** - Animations
+- **React Icons / Lucide Icons** - Icons
+- **Axios** - HTTP Client
+- **React Router** - Routing
 
-This project reimagines the AJCE web presence with a focus on:
-*   **Kinetic Aesthetics**: Dynamic animations and fluid transitions powered by Framer Motion.
-*   **Youth-Centric UX**: Bold typography, high-contrast visuals, and intuitive navigation tailored for the next generation of engineers.
-*   **Performance First**: Blazing fast load times and seamless interactions using Next.js.
+### Backend
+- **Node.js** - Runtime
+- **Express.js** - Web Framework
+- **MongoDB** - Database
+- **Mongoose** - ODM
+- **JWT** - Authentication
+- **Bcrypt** - Password Hashing
 
-## 🎓 Academic Excellence
+## 📁 Project Structure
 
-Explore our comprehensive range of programs designed to shape the future.
+```
+ajce-website/
+├── client/                 # Frontend React Application
+│   ├── public/
+│   ├── src/
+│   │   ├── components/    # Reusable UI components
+│   │   ├── pages/         # Page components
+│   │   ├── layouts/       # Layout components
+│   │   ├── hooks/         # Custom React hooks
+│   │   ├── utils/         # Utility functions
+│   │   ├── assets/        # Images, fonts, etc.
+│   │   ├── services/      # API service layer
+│   │   ├── App.js         # Main App component
+│   │   └── main.js        # Entry point
+│   └── package.json
+│
+├── server/                # Backend Node.js Application
+│   ├── controllers/       # Route controllers
+│   ├── routes/           # API routes
+│   ├── models/           # MongoDB models
+│   ├── middlewares/      # Custom middlewares
+│   ├── config/           # Configuration files
+│   ├── server.js         # Entry point
+│   └── package.json
+│
+└── README.md
+```
 
-### B.Tech Programs (Undergraduate)
-*   **Automobile Engineering** - Driving the future of mobility.
-*   **Civil Engineering** - Building the foundations of tomorrow.
-*   **Chemical Engineering** - Innovating through matter and energy.
-*   **Computer Science & Engineering** - Coding the digital frontier.
-*   **Electronics & Communication Engineering** - Connecting the world.
-*   **Electrical & Electronics Engineering** - Powering innovation.
-*   **Information Technology** - Mastering information systems.
-*   **Mechanical Engineering** - Engineering in motion.
-*   **Metallurgy** - Forging new possibilities.
+## 🏗️ Team Task Assignment
 
-### M.Tech Programs (Postgraduate)
-*   Communication Engineering
-*   Computer Science & Engineering
-*   Energy Systems
-*   Structural Engineering & Construction Management
-*   Machine Design
-*   Power Electronics & Power Systems
-*   Nano Technology
+### Developer 1 – Frontend UI
+- [ ] Home page
+- [ ] Navbar & Footer
+- [ ] Responsive layout
+- [ ] Framer Motion animations
 
-### Computer Applications
-*   **MCA** (Master of Computer Applications) - 2 Year / Dual Degree / Integrated
+### Developer 2 – Academic Pages
+- [ ] Departments listing
+- [ ] Courses pages
+- [ ] Faculty pages
+- [ ] API integration
 
-## 🛠️ Tech Stack & Features
+### Developer 3 – Backend
+- [ ] Auth system (JWT)
+- [ ] Database models
+- [ ] REST APIs
+- [ ] Middleware setup
 
-Built with the latest web technologies to deliver a premium experience.
+### Developer 4 – Admin Dashboard
+- [ ] Admin UI
+- [ ] CRUD forms
+- [ ] Role-based access
+- [ ] Content management
 
-*   **Framework**: [Next.js](https://nextjs.org/) (App Router)
-*   **Styling**: [Tailwind CSS](https://tailwindcss.com/) for rapid, utility-first design.
-*   **Animations**: [Framer Motion](https://www.framer.com/motion/) for kinetic interactions.
-*   **Icons**: [Lucide React](https://lucide.dev/) for clean, consistent iconography.
+### Developer 5 – QA & Optimization
+- [ ] Performance testing
+- [ ] Accessibility (WCAG)
+- [ ] SEO optimization
+- [ ] Cross-device testing
 
-## ⚡ Getting Started
+## 🛠️ Setup Instructions
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/yourusername/ajce-website.git
-    cd ajce-website
-    ```
+### Prerequisites
+- Node.js (v18 or higher)
+- MongoDB (Local or Atlas)
+- Git
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
+### Installation
 
-3.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
+1. **Clone the repository**
+```bash
+git clone https://github.com/AkashSuresh2675/Amal-Jyothi-clg-site.git
+cd Amal-Jyothi-clg-site
+```
 
-4.  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install Backend Dependencies**
+```bash
+cd server
+npm install
+```
+
+3. **Install Frontend Dependencies**
+```bash
+cd ../client
+npm install
+```
+
+4. **Environment Variables**
+
+Create `.env` file in `server/` directory:
+```env
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/ajce-website
+JWT_SECRET=your_jwt_secret_key_here
+JWT_EXPIRE=7d
+NODE_ENV=development
+```
+
+Create `.env` file in `client/` directory:
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+5. **Run Development Servers**
+
+Backend:
+```bash
+cd server
+npm run dev
+```
+
+Frontend (in new terminal):
+```bash
+cd client
+npm run dev
+```
+
+## 🌐 Website Sections
+
+### Public Pages
+1. **Home** - Hero, About preview, Highlights, News
+2. **About Us** - Vision, Mission, History, Management
+3. **Academics** - Departments, Courses, Faculty
+4. **Admissions** - Programs, Eligibility, Application
+5. **Campus Life** - Clubs, Events, Gallery
+6. **Research & Innovation** - Projects, Publications
+7. **Placements** - Statistics, Recruiters
+8. **Contact Us** - Location, Form, Info
+
+### Admin Dashboard
+- Secure login (JWT authentication)
+- News & Announcements management
+- Events management
+- Departments management
+- Faculty management
+- Gallery management
+- Role-based access control
+
+## 🔄 Git Workflow
+
+### Branch Naming Convention
+- `feature/feature-name` - New features
+- `fix/bug-name` - Bug fixes
+- `docs/description` - Documentation
+- `refactor/description` - Code refactoring
+
+### Commit Message Format
+```
+type(scope): subject
+
+body (optional)
+```
+
+Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
+Example:
+```bash
+git commit -m "feat(home): add hero section with animations"
+```
+
+### Pull Request Process
+1. Create feature branch from `main`
+2. Make changes and commit
+3. Push to GitHub
+4. Create Pull Request
+5. Request code review
+6. Merge after approval
+
+## 📦 Build & Deployment
+
+### Production Build
+
+Backend:
+```bash
+cd server
+npm run build
+npm start
+```
+
+Frontend:
+```bash
+cd client
+npm run build
+```
+
+### Deployment Options
+- **Frontend**: Vercel, Netlify, AWS S3
+- **Backend**: Railway, Render, AWS EC2
+- **Database**: MongoDB Atlas
+
+## 🧪 Testing
+
+```bash
+# Frontend tests
+cd client
+npm test
+
+# Backend tests
+cd server
+npm test
+```
+
+## 📱 Responsive Design
+- Mobile: 320px - 767px
+- Tablet: 768px - 1023px
+- Desktop: 1024px+
+
+## ♿ Accessibility
+- ARIA labels
+- Keyboard navigation
+- Screen reader support
+- WCAG 2.1 AA compliance
+
+## 📄 License
+© 2024 Amal Jyothi College of Engineering. All rights reserved.
+
+## 👥 Contributors
+- Developer 1 - Frontend UI
+- Developer 2 - Academic Pages
+- Developer 3 - Backend
+- Developer 4 - Admin Dashboard
+- Developer 5 - QA & Optimization
 
 ## 🤝 Contributing
+Please read the contribution guidelines before submitting PRs.
 
-We welcome contributions! Please check our [Contribution Guidelines](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and request features.
-
----
-*Crafted with ⚡ and ❤️ for AJCE.*
+## 📞 Support
+For issues or questions, contact: webmaster@ajce.in
