@@ -1,43 +1,71 @@
-import React, { Suspense, lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import MainLayout from './layouts/MainLayout';
-import Loader, { PageLoader } from './components/common/Loader';
-import ErrorBoundary from './components/common/ErrorBoundary';
+import Home from './pages/Home';
+import About from './pages/About';
+import Departments from './pages/Departments';
+import Faculty from './pages/Faculty';
+import Admissions from './pages/Admissions';
+import Research from './pages/Research';
+import CampusLife from './pages/CampusLife';
+import Contact from './pages/Contact';
+import Placements from './pages/Placements';
+import NotFound from './pages/NotFound';
 
-// Lazy-loaded pages for code-splitting
-const Home = lazy(() => import('./pages/Home'));
-const About = lazy(() => import('./pages/About'));
-const Departments = lazy(() => import('./pages/Departments'));
-const Faculty = lazy(() => import('./pages/Faculty'));
-const Admissions = lazy(() => import('./pages/Admissions'));
-const Research = lazy(() => import('./pages/Research'));
-const CampusLife = lazy(() => import('./pages/CampusLife'));
-const Contact = lazy(() => import('./pages/Contact'));
-const Placements = lazy(() => import('./pages/Placements'));
-const NotFound = lazy(() => import('./pages/NotFound'));
-const ServerError = lazy(() => import('./pages/ServerError'));
+// Admin Imports
+import Login from './pages/admin/Login';
+import Dashboard from './pages/admin/Dashboard';
+import ManageNews from './pages/admin/ManageNews';
+import ManageEvents from './pages/admin/ManageEvents';
+import ManageDepartments from './pages/admin/ManageDepartments';
+import ManageFaculty from './pages/admin/ManageFaculty';
+import AdminLayout from './layouts/AdminLayout';
+import ProtectedRoute from './components/ProtectedRoute';
+
+// Scroll to top
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 function App() {
   return (
-    <ErrorBoundary>
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/departments" element={<Departments />} />
-            <Route path="/faculty" element={<Faculty />} />
-            <Route path="/admissions" element={<Admissions />} />
-            <Route path="/research" element={<Research />} />
-            <Route path="/campus-life" element={<CampusLife />} />
-            <Route path="/placements" element={<Placements />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/500" element={<ServerError />} />
-            <Route path="*" element={<NotFound />} />
+    <>
+      <ScrollToTop />
+      <Routes>
+        {/* Public Routes */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/departments" element={<Departments />} />
+          <Route path="/faculty" element={<Faculty />} />
+          <Route path="/admissions" element={<Admissions />} />
+          <Route path="/research" element={<Research />} />
+          <Route path="/campus-life" element={<CampusLife />} />
+          <Route path="/placements" element={<Placements />} />
+          <Route path="/contact" element={<Contact />} />
+        </Route>
+
+        {/* Admin Routes */}
+        <Route path="/admin/login" element={<Login />} />
+
+        <Route path="/admin" element={<ProtectedRoute />}>
+          <Route element={<AdminLayout />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="news" element={<ManageNews />} />
+            <Route path="events" element={<ManageEvents />} />
+            <Route path="departments" element={<ManageDepartments />} />
+            <Route path="faculty" element={<ManageFaculty />} />
           </Route>
-        </Routes>
-      </Suspense>
-    </ErrorBoundary>
+        </Route>
+
+        {/* 404 Route */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
 

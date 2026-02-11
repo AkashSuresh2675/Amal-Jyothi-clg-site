@@ -8,8 +8,8 @@ const Navbar = () => {
 
   const menuItems = [
     { name: 'Home', path: '/' },
-    { 
-      name: 'About', 
+    {
+      name: 'About',
       path: '/about',
       submenu: [
         { name: 'About AJCE', path: '/about' },
@@ -17,8 +17,8 @@ const Navbar = () => {
         { name: 'Campus Life', path: '/campus-life' },
       ]
     },
-    { 
-      name: 'Academics', 
+    {
+      name: 'Academics',
       path: '/academics',
       submenu: [
         { name: 'Departments', path: '/departments' },
@@ -27,7 +27,7 @@ const Navbar = () => {
       ]
     },
     { name: 'Admissions', path: '/admissions' },
-    { name: 'Research', path: '/research' },
+    { name: 'Admin Login', path: '/admin/login' },
     { name: 'Placements', path: '/placements' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -69,7 +69,7 @@ const Navbar = () => {
                     {item.name}
                   </Link>
                 )}
-                
+
                 {/* Dropdown */}
                 {item.submenu && activeDropdown === item.name && (
                   <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg py-1 z-50">
