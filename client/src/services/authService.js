@@ -1,56 +1,75 @@
-import api from './api';
+const API_URL = 'http://localhost:5000/api/auth';
 
-export const authService = {
-  // Login
-  login: async (credentials) => {
-    const response = await api.post('/auth/login', credentials);
-    if (response.data.token) {
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
-    }
-    return response.data;
-  },
+const register = async (userData) => {
+  const response = await fetch(`${API_URL}/register`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+  });
 
-  // Register
-  register: async (userData) => {
-    const response = await api.post('/auth/register', userData);
-    return response.data;
-  },
+  const data = await response.json();
 
-  // Logout
-  logout: async () => {
-    try {
-      await api.post('/auth/logout');
-    } catch (error) {
-      console.error('Logout error:', error);
-    } finally {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-    }
-  },
+  if (!response.ok) {
+    throw new Error(data.message || 'Something went wrong');
+  }
 
-  // Get current user
-  getCurrentUser: async () => {
-    const response = await api.get('/auth/me');
-    return response.data;
-  },
+  if (data.success) {
+    localStorage.setItem('user', JSON.stringify(data.data));
+  }
 
-  // Update password
-  updatePassword: async (passwords) => {
-    const response = await api.put('/auth/update-password', passwords);
-    return response.data;
-  },
+  return data.data;
+};
 
-  // Get user from localStorage
-  getStoredUser: () => {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
-  },
+const login = async (userData) => {
+  const response = await fetch(`${API_URL}/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+  });
 
-  // Check if user is authenticated
-  isAuthenticated: () => {
-    return !!localStorage.getItem('token');
-  },
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Something went wrong');
+  }
+
+  if (data.success) {
+    localStorage.setItem('user', JSON.stringify(data.data));
+  }
+
+  return data.data;
+};
+
+const logout = () => {
+  localStorage.removeItem('user');
+};
+
+const getCurrentUser = () => {
+  return JSON.parse(localStorage.getItem('user'));
+};
+
+const loginDemo = async () => {
+  const demoUser = {
+    _id: 'demo-123',
+    name: 'Demo Admin',
+    email: 'demo@admin.com',
+    role: 'admin',
+    token: 'demo-token',
+  };
+  localStorage.setItem('user', JSON.stringify(demoUser));
+  return demoUser;
+};
+
+const authService = {
+  register,
+  login,
+  logout,
+  getCurrentUser,
+  loginDemo,
 };
 
 export default authService;

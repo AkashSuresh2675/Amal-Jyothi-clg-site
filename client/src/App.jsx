@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -10,21 +11,59 @@ import Contact from './pages/Contact';
 import Placements from './pages/Placements';
 import NotFound from './pages/NotFound';
 
+// Admin Imports
+import Login from './pages/admin/Login';
+import Dashboard from './pages/admin/Dashboard';
+import ManageNews from './pages/admin/ManageNews';
+import ManageEvents from './pages/admin/ManageEvents';
+import ManageDepartments from './pages/admin/ManageDepartments';
+import ManageFaculty from './pages/admin/ManageFaculty';
+import AdminLayout from './layouts/AdminLayout';
+import ProtectedRoute from './components/ProtectedRoute';
+
+// Scroll to top
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   return (
-    <Routes>
-      <Route element={<MainLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/departments" element={<Departments />} />
-        <Route path="/faculty" element={<Faculty />} />
-        <Route path="/admissions" element={<Admissions />} />
-        <Route path="/campus-life" element={<CampusLife />} />
-        <Route path="/placements" element={<Placements />} />
-        <Route path="/contact" element={<Contact />} />
+    <>
+      <ScrollToTop />
+      <Routes>
+        {/* Public Routes */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/departments" element={<Departments />} />
+          <Route path="/faculty" element={<Faculty />} />
+          <Route path="/admissions" element={<Admissions />} />
+          <Route path="/campus-life" element={<CampusLife />} />
+          <Route path="/placements" element={<Placements />} />
+          <Route path="/contact" element={<Contact />} />
+        </Route>
+
+        {/* Admin Routes */}
+        <Route path="/admin/login" element={<Login />} />
+
+        <Route path="/admin" element={<ProtectedRoute />}>
+          <Route element={<AdminLayout />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="news" element={<ManageNews />} />
+            <Route path="events" element={<ManageEvents />} />
+            <Route path="departments" element={<ManageDepartments />} />
+            <Route path="faculty" element={<ManageFaculty />} />
+          </Route>
+        </Route>
+
+        {/* 404 Route */}
         <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 }
 
