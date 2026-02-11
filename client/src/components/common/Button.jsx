@@ -1,3 +1,5 @@
+import React, { memo } from 'react';
+
 const Button = ({ 
   children, 
   variant = 'primary', 
@@ -40,5 +42,4 @@ const Button = ({
     </button>
   );
 };
-
-export default Button;
+export default memo(Button);

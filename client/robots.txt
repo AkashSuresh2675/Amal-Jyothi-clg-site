@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.ajce.in/sitemap.xml
+
+# Block any private API paths if needed
+Disallow: /server

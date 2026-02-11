@@ -251,3 +251,21 @@ Please read the contribution guidelines before submitting PRs.
 
 ## 📞 Support
 For issues or questions, contact: webmaster@ajce.in
+
+## **Performance & Accessibility Notes**
+- **Code splitting**: Routes are lazy-loaded using React.lazy and Suspense to reduce initial bundle size.
+- **React.memo**: Common controls (e.g. `Button`) use `React.memo` to avoid unnecessary re-renders.
+- **Accessibility**: ARIA labels and keyboard-friendly controls are encouraged; test with screen readers and keyboard navigation.
+
+## **SEO**
+- Default Open Graph meta tags and JSON-LD are added in `client/index.html`.
+- A `sitemap.xml` and `robots.txt` are included in the `client/` folder.
+
+## **Docs & Utilities Added**
+- `DEPLOYMENT.md` — deployment quick guide
+- `API_DOCUMENTATION.md` — API summary
+- `TESTING.md` — testing checklist
+
+## **Errors & Pages**
+- An `ErrorBoundary` component is included at `client/src/components/common/ErrorBoundary.jsx`.
+- A server-error page `client/src/pages/ServerError.jsx` and existing `NotFound.jsx` handle 5xx/404 views.
