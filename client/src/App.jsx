@@ -10,8 +10,10 @@ const About = lazy(() => import('./pages/About'));
 const Departments = lazy(() => import('./pages/Departments'));
 const Faculty = lazy(() => import('./pages/Faculty'));
 const Admissions = lazy(() => import('./pages/Admissions'));
+const Research = lazy(() => import('./pages/Research'));
 const CampusLife = lazy(() => import('./pages/CampusLife'));
 const Contact = lazy(() => import('./pages/Contact'));
+const Placements = lazy(() => import('./pages/Placements'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const ServerError = lazy(() => import('./pages/ServerError'));
 
@@ -26,7 +28,9 @@ function App() {
             <Route path="/departments" element={<Departments />} />
             <Route path="/faculty" element={<Faculty />} />
             <Route path="/admissions" element={<Admissions />} />
+            <Route path="/research" element={<Research />} />
             <Route path="/campus-life" element={<CampusLife />} />
+            <Route path="/placements" element={<Placements />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/500" element={<ServerError />} />
             <Route path="*" element={<NotFound />} />
