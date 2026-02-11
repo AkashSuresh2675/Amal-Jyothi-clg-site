@@ -10,6 +10,7 @@ import Research from './pages/Research';
 import CampusLife from './pages/CampusLife';
 import Contact from './pages/Contact';
 import Placements from './pages/Placements';
+import Academics from './pages/Academics';
 import NotFound from './pages/NotFound';
 
 // Admin Imports
@@ -46,7 +47,9 @@ function App() {
           <Route path="/research" element={<Research />} />
           <Route path="/campus-life" element={<CampusLife />} />
           <Route path="/placements" element={<Placements />} />
+
           <Route path="/contact" element={<Contact />} />
+          <Route path="/academics" element={<Academics />} />
         </Route>
 
         {/* Admin Routes */}
